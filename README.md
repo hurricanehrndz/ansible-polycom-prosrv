@@ -55,6 +55,7 @@ git clone https://github.com/hurricanehrndz/ansible-polycom-prosrv.git hurricane
 All variables meant to be overridden are stored in the
 [defaults/main.yml](defaults/main.yml) file. A list and short description of
 these variables can also be found in the table below.
+
 | Name                          | Types/Values   | Description                                                                                  |
 | ----------------------------- | -------------- | -------------------------------------------------------------------------------------------  |
 | `polycom_vvx_uc_software`     | string         | Url to latest vvx 'split' firware zip.                                                       |
