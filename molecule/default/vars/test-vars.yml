@@ -1,0 +1,8 @@
+---
+
+polycom_prosrv_addy: "127.0.0.1"
+polycom_phone_creds:
+  - polycom_phone_mac: "0004ffffffff"
+    polycom_phone_user: "roomphone"
+    polycom_phone_pass: "secret"
+    polycom_phone_domain: "contoso.com"

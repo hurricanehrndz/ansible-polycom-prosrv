@@ -1,2 +1,48 @@
 ---
+
+- name: Install required pkgs
+  action: >
+    {{ ansible_pkg_mgr }} name="{{ polycom_pkgs }}"
+
 # tasks file for ansible-polycom-config
+- name: Install and configure vstpd
+  include_role:
+    name: vsftpd-role
+  vars:
+    vsftpd_users: "{{ polycom_prosrv_access_opts }}"
+    vsftpd_config: "{{ polycom_prosrv_opts|combine(polycom_prosrv_add_opts) }}"
+
+- name: Grant ftp access to {{ polycom_ftp_user }} and setup home for provisioning
+  include_tasks: fix-vsftp-home.yml
+
+- name: Install polycom firwares
+  include_tasks: install-fw.yml
+
+- name: Install shared phone config
+  template:
+    src: shared.cfg.j2
+    dest: "{{ polycom_ftp_home }}/shared.cfg"
+    owner: root
+    group: root
+    mode: 0444
+    validate: xmllint --schema "{{ polycom_vvx_fw_dest }}/Config/polycomConfig.xsd" %s
+
+- name: Install master provisioning file
+  template:
+    src: 000000000000.cfg.j2
+    dest: "{{ polycom_ftp_home }}/000000000000.cfg"
+    owner: root
+    group: root
+    mode: 0444
+
+- name: Configure skype for business SSI
+  template:
+    src: reg-basic.cfg.j2
+    dest: "{{ polycom_ftp_home }}/reg-basic_{{ item.polycom_phone_mac }}.cfg"
+    validate: xmllint --schema "{{ polycom_vvx_fw_dest }}/Config/polycomConfig.xsd" %s
+  vars:
+    polycom_phone_user: "{{ item.polycom_phone_user }}"
+    polycom_phone_pass: "{{ item.polycom_phone_pass }}"
+    polycom_phone_domain: "{{ item.polycom_phone_domain }}"
+  with_items: "{{ polycom_phone_creds }}"
+  when: polycom_phone_creds|default([])|length > 0

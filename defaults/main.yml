@@ -1,2 +1,68 @@
 ---
 # defaults file for ansible-polycom-config
+
+polycom_vvx_uc_software: "https://downloads.polycom.com/voice/voip/uc/polycom-uc-software-5-9-0-rts142-release-sig-split.zip"
+polycom_trio_uc_software: "https://downloads.polycom.com/voice/rp_trio/Poly_UC_Software_5_9_1_10906_AB_Trio8800_release.zip"
+polycom_exchange_integration: true
+
+polycom_exchange_url: "https://outlook.office365.com/EWS/Exchange.asmx"
+polycom_exchange_reminder: true
+polycom_enable_btoe: true
+polycom_set_admin_pass: true
+polycom_admin_pass: "456"
+polycom_enable_lync_updates: false
+polycom_enable_http: true
+polycom_web_port: 4443
+
+polycom_ftp_user: "polycom"
+polycom_ftp_name: "Polycom Provisioning"
+# default ftp pass: polycom456
+polycom_ftp_pass: "$6$FbiTAwDm5hekX6$Ezbr/Ledx3UX1WBsBg18kmMlZxtrqhl89OaMBCqZx.IbtR8U4CKSRhZzdTh327f5gIWvygf7vKECowHtFu0i71"
+polycom_prosrv_access_opts:
+  - username: "{{ polycom_ftp_user }}"
+    name: "{{ polycom_ftp_name }}"
+    password: "{{ polycom_ftp_pass }}"
+polycom_prosrv_opts:
+  local_enable: YES
+  write_enable: YES
+  chroot_local_user: YES
+  xferlog_enable: YES
+  log_ftp_protocol: YES
+  userlist_deny: NO
+  userlist_enable: YES
+  # polycom only supports pasv
+  pasv_enable: YES
+  pasv_min_port: "{{ polycom_prosrv_min_port|default(60000) }}"
+  pasv_max_port: "{{ polycom_prosrv_max_port|default(60100) }}"
+  pasv_address: "{{ polycom_prosrv_addy }}"
+
+polycom_prosrv_add_opts: {}
+
+polycom_ftp_rcs:
+  - ".bashrc"
+  - ".bash_logout"
+  - ".profile"
+
+polycom_ftp_dirs:
+  - "LOGS"
+  - "OVERRIDES"
+  - "CONTACTS"
+  - "LICENCE"
+  - "PROFILES"
+  - "CALLLISTS"
+  - "COREDUMPS"
+  - "CAMERAPRESETS"
+  - "FIRMWARE-VXX"
+  - "FIRMWARE-TRIO"
+
+polycom_vvx_cfgs:
+  - shared.cfg
+  - "reg-basic_[PHONE_MAC_ADDRESS].cfg"
+
+polycom_trio_cfgs:
+  - shared.cfg
+  - "reg-basic_[PHONE_MAC_ADDRESS].cfg"
+
+polycom_pkgs:
+  - zip
+  - libxml2-utils

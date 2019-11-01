@@ -1,0 +1,25 @@
+---
+dist: bionic
+
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      services: docker
+      language: python
+      python: "3.8"
+      env:
+        - ANSIBLE='ansible>=2.8'
+
+install:
+  - pip3 install -U pip
+  - pip3 install "${ANSIBLE}" testinfra molecule docker
+
+script:
+  - python --version
+  - molecule --version
+  - ansible --version
+  - ./test.sh
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

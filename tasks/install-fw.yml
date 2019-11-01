@@ -1,0 +1,66 @@
+---
+
+- name: Get VVX firmware version
+  set_fact:
+    polycom_vvx_fw_dest:  "{{ polycom_ftp_home }}/FIRMWARE-VVX/{{ polycom_vvx_uc_software |
+      regex_replace(
+        '.*polycom-uc-software-(?P<ver>[0-9-]+)-(?P<subver>[0-9a-z-]+)-release-sig-split.zip$',
+        '\\g<ver>-\\g<subver>'
+       ) |
+       regex_replace('-', '.')
+    }}"
+
+- name: Get trio firmware version
+  set_fact:
+    polycom_trio_fw_dest:  "{{ polycom_ftp_home }}/FIRMWARE-TRIO/{{ polycom_trio_uc_software |
+      regex_replace(
+        '.*Poly_UC_Software_(?P<ver>[0-9_]+)_(?P<subver>[0-9A-z_]+)_Trio8800_release.zip$',
+        '\\g<ver>-\\g<subver>'
+       ) |
+       regex_replace('[-_]', '.')
+    }}"
+
+- name: Set vvx fw
+  set_fact:
+    polycom_vvx_fw: "{{ polycom_vvx_fw_dest | regex_replace('/home/polycom/','') }}/sip.ld"
+
+- name: Set trio fw
+  set_fact:
+    polycom_trio_fw: "{{ polycom_trio_fw_dest | regex_replace('/home/polycom/','') }}/sip.ld"
+
+- debug:
+    var: polycom_trio_fw
+
+- name: Create firmware directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    mode: 0755
+  with_items:
+    - "{{ polycom_trio_fw_dest }}"
+    - "{{ polycom_vvx_fw_dest }}"
+
+- name: Get polycom firmwares
+  get_url:
+    url: "{{ item.fw_url }}"
+    dest: "{{ item.fw_directory }}"
+    owner: root
+  with_items:
+    - fw_directory: "{{ polycom_vvx_fw_dest }}"
+      fw_url: "{{ polycom_vvx_uc_software }}"
+    - fw_directory: "{{ polycom_trio_fw_dest }}"
+      fw_url: "{{ polycom_trio_uc_software }}"
+
+- name: Expand firmwares
+  unarchive:
+    src: "{{ item.archive }}"
+    dest: "{{ item.dest }}/"
+    remote_src: yes
+  with_items:
+    - archive: "{{ polycom_vvx_fw_dest }}/{{ polycom_vvx_uc_software |
+      regex_replace('.*/(?P<zip>.+.zip)', '\\g<zip>') }}"
+      dest: "{{ polycom_vvx_fw_dest }}"
+    - archive: "{{ polycom_trio_fw_dest }}/{{ polycom_trio_uc_software |
+      regex_replace('.*/(?P<zip>.+.zip)', '\\g<zip>') }}"
+      dest: "{{ polycom_trio_fw_dest }}"

@@ -1,0 +1,42 @@
+---
+
+- name: Get polycom provisioning user home
+  getent:
+    database: passwd
+    key: "{{ polycom_ftp_user }}"
+    split: ":"
+
+- name: Set polcyom ftp user home
+  set_fact:
+    polycom_ftp_home: "{{ getent_passwd[polycom_ftp_user][4] }}"
+
+- name: Clean polycom ftp home of rc files
+  file:
+    path: "{{ polycom_ftp_home }}/{{ item }}"
+    state: absent
+  with_items: "{{ polycom_ftp_rcs }}"
+
+- name: Create porvisioning directories
+  file:
+    path: "{{ polycom_ftp_home }}/{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ polycom_ftp_user }}"
+  with_items: "{{ polycom_ftp_dirs }}"
+
+- name: Fix permission on ftp home
+  file:
+    path: "{{ polycom_ftp_home }}"
+    state: directory
+    mode: 0555
+    owner: "{{ polycom_ftp_user }}"
+
+- name: vsftp allow "{{ polycom_ftp_user }}" access
+  lineinfile:
+    path: /etc/vsftpd.user_list
+    line: "{{ polycom_ftp_user }}"
+    mode: 0644
+    create: true
+    owner: root
+    group: root
+  notify: restart vsftpd

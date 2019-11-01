@@ -1,0 +1,25 @@
+#jinja2: lstrip_blocks: "True"
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Generated device.cfg Configuration File -->
+<polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
+  <reg reg.1.auth.loginCredentialType="usernameAndPassword"
+    reg.1.address="{{ polycom_phone_user }}@{{ polycom_phone_domain }}"
+    reg.1.srtp.offer="1"
+    reg.1.auth.useLoginCredentials="1" />
+  <device>
+    <device.logincred device.logincred.user="{{ polycom_phone_user }}@{{ polycom_phone_domain }}"
+      device.logincred.password="{{ polycom_phone_pass }}" >
+      <device.logincred.password device.logincred.password.set="1" />
+      <device.logincred.user device.logincred.user.set="1" />
+    </device.logincred>
+  </device>
+  <msg>
+      <msg.mwi
+        msg.mwi.1.callBack="sip:{{ polycom_phone_user }}@{{ polycom_phone_domain }};opaque=app:voicemail"
+        msg.mwi.1.callBackMode="contact" />
+  </msg>
+  <!-- Enable BTOE -->
+  {% if polycom_enable_btoe %}
+  <feature feature.btoe.enabled="1" />
+  {% endif %}
+</polycomConfig>

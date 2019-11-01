@@ -1,5 +1,23 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-polycom-config
+  vars:
+    vsftpd_enable_ssl: false
+  tasks:
+    - name: Include test variables
+      include_vars:
+        file: test-vars.yml
+      when: polycom_ci_test|default(true)
+
+    - name: Include production test variables
+      include_vars:
+        file: production-vars.yml
+      when: not polycom_ci_test|default(true)
+
+    - name: Update repo cache
+      action: >
+        {{ ansible_pkg_mgr }} update_cache=yes
+
+    - name: Setup polycom provisioning
+      include_role:
+        name: ansible-polycom-prosrv
