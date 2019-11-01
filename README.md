@@ -55,24 +55,24 @@ git clone https://github.com/hurricanehrndz/ansible-polycom-prosrv.git hurricane
 All variables meant to be overridden are stored in the
 [defaults/main.yml](defaults/main.yml) file. A list and short description of
 these variables can also be found in the table below.
-|Name                                   |Types/Values            |Description                                                                                  |
-|---------------------------------------|------------------------| ----------------------------------------------------------------------------------------    |
-|`polycom_vvx_uc_software`              |string                  |Url to latest vvx 'split' firware zip.                                                       |
-|`polycom_trio_uc_software`             |string                  |Url  to latest trio firmware zip.                                                            |
-|`polycom_exchnage_integration`         |boolean                 |Enable Exchange integration                                                                  |
-|`polycom_exchnage_url`                 |string                  |Exchange web services URL for org                                                            |
-|`polycom_exchnage_reminder`            |boolean                 |Enable calendar reminders                                                                    |
-|`polycom_enable_btoe`                  |boolean                 |Enable Better Together Over Ethernet feature                                                 |
-|`polycom_set_admin_pass`               |boolean                 |Set admin phone password                                                                     |
-|`polycom_admin_pass`                   |string                  |Set admin phone password to value. '456'                                                     |
-|`polycom_enable_lync_updates`          |boolean                 |Enable Update from SfB Servers                                                               |
-|`polycom_enable_http`                  |boolean                 |Enable phone's web interface over https                                                      |
-|`polycom_web_port`                     |Interger                |HTTPS port web interface listens on                                                          |
-|`polycom_ftp_user`                     |string                  |Username for accessing provisioning server                                                   |
-|`polycom_ftp_name`                     |string                  |User identity for acessing provisioning server                                               |
-|`polycom_ftp_pass`                     |string                  |[user password, hashed and salted](https://bit.ly/2PD9Vgr). Default is 'polycom456'          |
-|`polycom_prov_add_opts`                |hash                    |additional opt for sane defaults on FTP service set by role                                  |
-|`polycom_phone_creds`                  |hash                    |SfB Phone credentials for Single-Sign-In, see [example](molecule/default/vars/test-vars.yml) |
+| Name                          | Types/Values   | Description                                                                                  |
+| ----------------------------- | -------------- | -------------------------------------------------------------------------------------------  |
+| `polycom_vvx_uc_software`     | string         | Url to latest vvx 'split' firware zip.                                                       |
+| `polycom_trio_uc_software`    | string         | Url  to latest trio firmware zip.                                                            |
+| `polycom_exchnage_integration`| boolean        | Enable Exchange integration                                                                  |
+| `polycom_exchnage_url`        | string         | Exchange web services URL for org                                                            |
+| `polycom_exchnage_reminder`   | boolean        | Enable calendar reminders                                                                    |
+| `polycom_enable_btoe`         | boolean        | Enable Better Together Over Ethernet feature                                                 |
+| `polycom_set_admin_pass`      | boolean        | Set admin phone password                                                                     |
+| `polycom_admin_pass`          | string         | Set admin phone password to value. '456'                                                     |
+| `polycom_enable_lync_updates` | boolean        | Enable Update from SfB Servers                                                               |
+| `polycom_enable_http`         | boolean        | Enable phone's web interface over https                                                      |
+| `polycom_web_port`            | interger       | HTTPS port web interface listens on                                                          |
+| `polycom_ftp_user`            | string         | Username for accessing provisioning server                                                   |
+| `polycom_ftp_name`            | string         | User identity for acessing provisioning server                                               |
+| `polycom_ftp_pass`            | string         | [user password, hashed and salted](https://bit.ly/2PD9Vgr). Default is 'polycom456'          |
+| `polycom_prov_add_opts`       | hash           | additional opt for sane defaults on FTP service set by role                                  |
+| `polycom_phone_creds`         | hash           | SfB Phone credentials for Single-Sign-In, see [example](molecule/default/vars/test-vars.yml) |
 
 ## Dependencies
 
