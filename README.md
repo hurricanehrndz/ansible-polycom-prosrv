@@ -28,7 +28,7 @@ features. The current set of features are sufficient for my needs.
 ## Requirements
 
 - Ansible >= 2.4
-- [vsftpd-role](requirementsl.yml)
+- [vsftpd-role](requirements.yml)
 
 ## Installation
 
