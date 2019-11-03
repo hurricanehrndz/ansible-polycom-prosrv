@@ -1,7 +1,7 @@
 # hurricanehrndz.polycom-prosrv
 
-[![Build Status](https://img.shields.io/travis/hurricanehrndz/ansible-polycom-porvsrv/master.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/hurricanehrndz/ansible-polycom-prosrv)
-[![Galaxy](http://img.shields.io/badge/galaxy-hurricanehrndz.polycom--prosrv-blue.svg?style=for-the-badge&logo=ansible)](https://galaxy.ansible.com/hurricanehrndz/polycom-prosrv)
+[![Build Status](https://img.shields.io/travis/hurricanehrndz/ansible-polycom-prosrv/master.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/hurricanehrndz/ansible-polycom-prosrv)
+[![Galaxy](http://img.shields.io/badge/galaxy-hurricanehrndz.polycom--prosrv-blue.svg?style=for-the-badge&logo=ansible)](https://galaxy.ansible.com/hurricanehrndz/polycom_prosrv)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/hurricanehrndz/ansible-rustup/master/LICENSE)
 
 `hurricanehrndz.polycom-prosrv` is an Ansible role which:
