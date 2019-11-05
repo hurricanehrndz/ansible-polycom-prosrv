@@ -92,6 +92,7 @@ these variables can also be found in the table below.
       include_role:
         name: hurricanehrndz.polycom-prosrv
       vars:
+        # FTP server
         polycom_prosrv_addy: "prosrv.contoso.com"
         polycom_prosrv_add_opts:
           pasv_addr_resolve: YES
@@ -100,6 +101,44 @@ these variables can also be found in the table below.
             polycom_phone_user: "roomphone"
             polycom_phone_pass: "secret"
             polycom_phone_domain: "contoso.com"
+```
+
+```yaml
+- hosts: servers
+  pre_tasks:
+    - name: Update repo cache
+      action: >
+        {{ ansible_pkg_mgr }} update_cache=ye
+  tasks:
+    - name: Setup polycom provisioning
+      include_role:
+        name: hurricanehrndz.polycom-prosrv
+      vars:
+        # implicit FTPS server
+        polycom_prosrv_addy: "prosrv.contoso.com"
+        polycom_prosrv_add_opts:
+          # certs must exist, create using another role
+          rsa_cert_file: /etc/letsencrypt/live/prosrv.contoso.com/cert.pem
+          rsa_private_key_file: /etc/letsencrypt/live/cal-q91-polycom.geologic.com/privkey.pem
+
+          listen_port: 990
+          pasv_addr_resolve: YES
+          ssl_enable: YES
+          implicit_ssl: YES
+          allow_anon_ssl: NO
+          force_local_data_ssl: YES
+          force_local_logins_ssl: YES
+          ssl_tlsv1: YES
+          ssl_sslv2: NO
+          ssl_sslv3: NO
+          require_ssl_reuse: YES
+          ssl_ciphers: HIGH
+        polycom_phone_creds:
+          - polycom_phone_mac: "0004ffffffff"
+            polycom_phone_user: "roomphone"
+            polycom_phone_pass: "secret"
+            polycom_phone_domain: "contoso.com"
+
 ```
 
 ## License
