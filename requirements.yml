@@ -1,4 +1,4 @@
-# vsftpd from galaxy
+---
 - src: https://github.com/hurricanehrndz/ansible-vsftpd
   version: master
   name: vsftpd-role

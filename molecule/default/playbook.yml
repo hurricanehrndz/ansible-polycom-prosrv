@@ -1,9 +1,8 @@
 ---
 - name: Converge
   hosts: all
-  vars:
-    vsftpd_enable_ssl: false
-  tasks:
+  # setup vsftpd
+  pre_tasks:
     - name: Include test variables
       include_vars:
         file: test-vars.yml
@@ -18,6 +17,8 @@
       action: >
         {{ ansible_pkg_mgr }} update_cache=yes
 
+  # Setup vsftp for provisioning
+  tasks:
     - name: Setup polycom provisioning
       include_role:
         name: ansible-polycom-prosrv

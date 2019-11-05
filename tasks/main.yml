@@ -4,14 +4,6 @@
   action: >
     {{ ansible_pkg_mgr }} name="{{ polycom_pkgs }}"
 
-# tasks file for ansible-polycom-config
-- name: Install and configure vstpd
-  include_role:
-    name: vsftpd-role
-  vars:
-    vsftpd_users: "{{ polycom_prosrv_access_opts }}"
-    vsftpd_config: "{{ polycom_prosrv_opts|combine(polycom_prosrv_add_opts) }}"
-
 - name: Grant ftp access to {{ polycom_ftp_user }} and setup home for provisioning
   include_tasks: fix-vsftp-home.yml
 

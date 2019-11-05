@@ -77,17 +77,17 @@ these variables can also be found in the table below.
 
 ## Dependencies
 
-- None
+- [vsftpd-role](/requirements.yml)
 
 ## Example Playbook
 
 ```yaml
 - hosts: servers
-  tasks:
+  pre_tasks:
     - name: Update repo cache
       action: >
         {{ ansible_pkg_mgr }} update_cache=ye
-
+  tasks:
     - name: Setup polycom provisioning
       include_role:
         name: hurricanehrndz.polycom-prosrv
