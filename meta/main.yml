@@ -13,6 +13,4 @@ galaxy_info:
   galaxy_tags: [polycom, phones]
 
 dependencies:
-  - src: https://github.com/hurricanehrndz/ansible-vsftpd
-    version: master
-    name: vsftpd-role
+  - role: hurricanehrndz.ansible-vsftpd
