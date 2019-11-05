@@ -1,4 +1,2 @@
 ---
-- src: https://github.com/hurricanehrndz/ansible-vsftpd
-  version: master
-  name: vsftpd-role
+- src: hurricanehrndz.ansible_vsftpd
