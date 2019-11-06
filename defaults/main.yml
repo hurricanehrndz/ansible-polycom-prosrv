@@ -66,4 +66,3 @@ polycom_trio_cfgs:
 polycom_pkgs:
   - zip
   - libxml2-utils
-
