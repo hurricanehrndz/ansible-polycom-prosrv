@@ -16,11 +16,15 @@
     device.baseProfile="Lync" device.prov.lyncDeviceUpdateEnabled="0"
     device.prov.lyncDeviceUpdateEnabled.set="1"
     lync.provisionDeviceParams.enabled="0" />
-  {%- endif %}
+  {% endif %}
   {% if polycom_set_admin_pass %}
   <!-- Change Admin Password -->
-    <device device.auth.localAdminPassword="{{ polycom_admin_pass }}"
-      device.auth.localAdminPassword.set="1" />
+  <device device.set="1">
+    <device.auth device.auth.localAdminPassword="{{ polycom_admin_pass }}" device.auth.localUserPassword="{{ polycom_admin_pass }}" >
+     <device.auth.localAdminPassword device.auth.localAdminPassword.set="1" />
+     <device.auth.localUserPassword device.auth.localUserPassword.set="1" />
+    </device.auth>
+  </device>
   {% endif %}
   <device device.prov.tagSerialNo="1" device.prov.tagSerialNo.set="1" />
   {% if polycom_enable_http %}

@@ -119,7 +119,7 @@ these variables can also be found in the table below.
         polycom_prosrv_add_opts:
           # certs must exist, create using another role
           rsa_cert_file: /etc/letsencrypt/live/prosrv.contoso.com/cert.pem
-          rsa_private_key_file: /etc/letsencrypt/live/cal-q91-polycom.geologic.com/privkey.pem
+          rsa_private_key_file: /etc/letsencrypt/live/prosrv.contoso.com/privkey.pem
 
           listen_port: 990
           pasv_addr_resolve: YES
@@ -131,7 +131,8 @@ these variables can also be found in the table below.
           ssl_tlsv1: YES
           ssl_sslv2: NO
           ssl_sslv3: NO
-          require_ssl_reuse: YES
+          # Polycom need to reuse
+          require_ssl_reuse: NO
           ssl_ciphers: HIGH
         polycom_phone_creds:
           - polycom_phone_mac: "0004ffffffff"
