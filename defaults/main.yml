@@ -54,6 +54,7 @@ polycom_ftp_dirs:
   - "CAMERAPRESETS"
   - "FIRMWARE-VVX"
   - "FIRMWARE-TRIO"
+  - "APP_FILES"
 
 polycom_vvx_cfgs:
   - shared.cfg
