@@ -52,7 +52,7 @@ polycom_ftp_dirs:
   - "CALLLISTS"
   - "COREDUMPS"
   - "CAMERAPRESETS"
-  - "FIRMWARE-VXX"
+  - "FIRMWARE-VVX"
   - "FIRMWARE-TRIO"
 
 polycom_vvx_cfgs:

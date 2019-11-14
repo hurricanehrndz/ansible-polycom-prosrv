@@ -22,6 +22,7 @@
     state: directory
     mode: 0755
     owner: "{{ polycom_ftp_user }}"
+    group: "{{ polycom_ftp_user }}"
   with_items: "{{ polycom_ftp_dirs }}"
 
 - name: Fix permission on ftp home
