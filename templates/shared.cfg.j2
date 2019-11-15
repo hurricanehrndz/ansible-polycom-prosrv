@@ -38,7 +38,7 @@
   <prov prov.polling.enabled="1" prov.polling.mode="random" prov.polling.period="86400" prov.polling.time="01:00" prov.polling.timeRandomEnd="05:00" />
   <!-- Skype features -->
   <feature feature.lync.hideSignOut="1"
-    feature.EWSAutodiscover.enabled="0" />
+    feature.EWSAutodiscover.enabled="1" />
   <!-- Exchange integration -->
   <exchange>
     <exchange.server exchange.server.url="{{ polycom_exchange_url }}" />
@@ -72,4 +72,8 @@
         powerSaving.officeHours.duration.sunday="24" />
     </powerSaving.officeHours>
   </powerSaving>
+  <!-- Enable Log uploading -->
+  <feature>
+   <feature.logUpload feature.logUpload.enabled="1" />
+  </feature>
 </polycomConfig>
