@@ -2,7 +2,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- Generated device.cfg Configuration File -->
 <polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
-  {% if polycom_phone_user is defined %}
+  {% if polycom_phone_user != 'bad_user' %}
   <reg reg.1.auth.loginCredentialType="usernameAndPassword"
     reg.1.address="{{ polycom_phone_user }}@{{ polycom_phone_domain }}"
     reg.1.srtp.offer="1"

@@ -6,3 +6,4 @@ polycom_phone_creds:
     polycom_phone_user: "roomphone"
     polycom_phone_pass: "secret"
     polycom_phone_domain: "contoso.com"
+  - polycom_phone_mac: "0004eeffffff"

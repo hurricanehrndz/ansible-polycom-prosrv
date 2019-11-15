@@ -33,8 +33,8 @@
     dest: "{{ polycom_ftp_home }}/reg-basic_{{ item.polycom_phone_mac }}.cfg"
     validate: xmllint --schema "{{ polycom_vvx_fw_dest }}/Config/polycomConfig.xsd" %s
   vars:
-    polycom_phone_user: "{{ item.polycom_phone_user }}"
-    polycom_phone_pass: "{{ item.polycom_phone_pass }}"
-    polycom_phone_domain: "{{ item.polycom_phone_domain }}"
+    polycom_phone_user: "{{ item.polycom_phone_user|default('bad_user') }}"
+    polycom_phone_pass: "{{ item.polycom_phone_pass|default('bad_user') }}"
+    polycom_phone_domain: "{{ item.polycom_phone_domain|default('bad_user') }}"
   with_items: "{{ polycom_phone_creds }}"
   when: polycom_phone_creds|default([])|length > 0
