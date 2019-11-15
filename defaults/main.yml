@@ -12,6 +12,7 @@ polycom_set_admin_pass: true
 polycom_admin_pass: "456"
 polycom_enable_lync_updates: false
 polycom_enable_http: true
+polycom_enable_logging: true
 polycom_web_port: 4443
 
 polycom_ftp_user: "polycom"

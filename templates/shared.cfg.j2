@@ -76,4 +76,20 @@
   <feature>
    <feature.logUpload feature.logUpload.enabled="1" />
   </feature>
+  {% if polycom_enable_logging %}
+  <log>
+    <log.render
+      log.render.level="1"
+      log.render.type="2"
+      log.render.file="1"
+      log.render.file.upload.period="86400"
+      log.render.file.upload.append="0"
+      log.render.file.upload.append.sizeLimit="512"
+      log.render.file.upload.append.limitMode="delete"
+    />
+  </log>
+  <feature>
+    <feature.logUpload feature.logUpload.enabled="1" />
+  </feature>
+  {% endif %}
 </polycomConfig>
