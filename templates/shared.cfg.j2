@@ -29,7 +29,12 @@
   <device device.prov.tagSerialNo="1" device.prov.tagSerialNo.set="1" />
   {% if polycom_enable_http %}
   <!-- Enable access to the phones website -->
-  <httpd httpd.enabled="1" httpd.cfg.enabled="1" httpd.cfg.secureTunnelRequired="1" httpd.cfg.secureTunnelPort="{{ polycom_web_port }}" />
+  <httpd httpd.enabled="1"
+    httpd.cfg.enabled="1"
+    httpd.cfg.secureTunnelRequired="1"
+    httpd.ta.enabled="1"
+    httpd.cfg.secureTunnelEnabled="1"
+    httpd.cfg.secureTunnelPort="{{ polycom_web_port }}" />
   {% else %}
   <!-- Disable access to the phones website -->
   <httpd httpd.enabled="0" />
