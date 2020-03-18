@@ -86,7 +86,7 @@ these variables can also be found in the table below.
   pre_tasks:
     - name: Update repo cache
       action: >
-        {{ ansible_pkg_mgr }} update_cache=ye
+        {{ ansible_pkg_mgr }} update_cache=yes
   tasks:
     - name: Setup polycom provisioning
       include_role:
@@ -108,7 +108,7 @@ these variables can also be found in the table below.
   pre_tasks:
     - name: Update repo cache
       action: >
-        {{ ansible_pkg_mgr }} update_cache=ye
+        {{ ansible_pkg_mgr }} update_cache=yes
   tasks:
     - name: Setup polycom provisioning
       include_role:
