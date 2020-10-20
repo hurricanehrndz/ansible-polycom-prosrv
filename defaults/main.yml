@@ -1,7 +1,7 @@
 ---
 # defaults file for ansible-polycom-config
 
-polycom_vvx_uc_software: "https://downloads.polycom.com/voice/voip/uc/polycom-uc-software-5-9-0-rts142-release-sig-split.zip"
+polycom_vvx_uc_software: "http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_6.3.1.8427_rts30_release_sig_split.zip"
 polycom_trio_uc_software: "https://downloads.polycom.com/voice/rp_trio/Poly_UC_Software_5_9_1_10906_AB_Trio8800_release.zip"
 polycom_exchange_integration: true
 

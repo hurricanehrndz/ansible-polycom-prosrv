@@ -4,7 +4,7 @@
   set_fact:
     polycom_vvx_fw_dest:  "{{ polycom_ftp_home }}/FIRMWARE-VVX/{{ polycom_vvx_uc_software |
       regex_replace(
-        '.*polycom-uc-software-(?P<ver>[0-9-]+)-(?P<subver>[0-9a-z-]+)-release-sig-split.zip$',
+        '.*Polycom_UC_Software_(?P<ver>[0-9._]+)_(?P<subver>[0-9a-z_]+)_release_sig_split.zip$',
         '\\g<ver>-\\g<subver>'
        ) |
        regex_replace('-', '.')
