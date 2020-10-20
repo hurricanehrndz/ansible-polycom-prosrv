@@ -53,7 +53,7 @@
       fw_url: "{{ polycom_trio_uc_software }}"
 
 - name: Expand firmwares
-  unarchive:
+  unarchive: # noqa 208
     src: "{{ item.archive }}"
     dest: "{{ item.dest }}/"
     remote_src: yes

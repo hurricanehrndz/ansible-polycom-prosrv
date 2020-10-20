@@ -32,6 +32,9 @@
     src: reg-basic.cfg.j2
     dest: "{{ polycom_ftp_home }}/reg-basic_{{ item.polycom_phone_mac }}.cfg"
     validate: xmllint --schema "{{ polycom_vvx_fw_dest }}/Config/polycomConfig.xsd" %s
+    owner: root
+    group: root
+    mode: 0444
   vars:
     polycom_phone_user: "{{ item.polycom_phone_user|default('bad_user') }}"
     polycom_phone_pass: "{{ item.polycom_phone_pass|default('bad_user') }}"

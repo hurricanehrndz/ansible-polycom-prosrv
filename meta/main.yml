@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Carlos Hernandez
-  role_name: polycom-prosrv
+  role_name: polycom_prosrv
   description: Configures a fully functional polycom provisioning server using vsftpd
   license: MIT
   min_ansible_version: 2.8
