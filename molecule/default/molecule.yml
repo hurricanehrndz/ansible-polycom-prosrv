@@ -5,11 +5,11 @@ dependency:
     role-file: requirements.yml
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-data:
-      ignore: '.direnv/'
+lint: |
+    yamllint .
+    ansible-lint --exclude meta .git
+    flake8
+
 platforms:
   - name: polycom-prosrv_${MOLECULE_DISTRIBUTION:-ubuntu18}
     image: "quay.io/samdoran/${MOLECULE_DISTRIBUTION:-ubuntu18}-ansible:latest"
@@ -26,13 +26,10 @@ provisioner:
   name: ansible
   options:
     vvv: true
-  lint:
-    name: ansible-lint
+
 scenario:
   name: default
 verifier:
   name: testinfra
   options:
     verbose: true
-  lint:
-    name: flake8
