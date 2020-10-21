@@ -9,6 +9,7 @@ polycom_exchange_url: "https://outlook.office365.com/EWS/Exchange.asmx"
 polycom_exchange_reminder: true
 polycom_enable_btoe: true
 polycom_set_admin_pass: true
+polycom_set_ca_cert: false
 polycom_admin_pass: "456"
 polycom_enable_lync_updates: false
 polycom_enable_http: true
