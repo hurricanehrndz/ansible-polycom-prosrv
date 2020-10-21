@@ -4,10 +4,10 @@
   set_fact:
     polycom_vvx_fw_dest:  "{{ polycom_ftp_home }}/FIRMWARE-VVX/{{ polycom_vvx_uc_software |
       regex_replace(
-        '.*Polycom_UC_Software_(?P<ver>[0-9._]+)_(?P<subver>[0-9a-z_]+)_release_sig_split.zip$',
+        '.*(p|P)olycom(-|_)(u|U)(c|C)(-|_)(s|S)oftware(_|-)(?P<ver>[0-9.-]+)(_|-)(?P<subver>[0-9a-z]+)(-|_)release(-|_)sig(-|_)split.zip$',
         '\\g<ver>-\\g<subver>'
        ) |
-       regex_replace('-', '.')
+       regex_replace('[-_]', '.')
     }}"
 
 - name: Get trio firmware version
