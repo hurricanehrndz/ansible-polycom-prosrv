@@ -44,7 +44,7 @@ def test_polycom_ftp_dirs(host, dir_name):
 
 
 @pytest.mark.parametrize("dir_name", [
-    "FIRMWARE-VVX/6.3.1.8427.rts30",
+    "FIRMWARE-VVX/5.9.6.rts38",
     "FIRMWARE-TRIO/5.9.1.10906.AB"
 ])
 def test_polycom_fw_dirs(host, dir_name):
@@ -57,7 +57,7 @@ def test_polycom_fw_dirs(host, dir_name):
 
 
 @pytest.mark.parametrize("firmware", [
-    "FIRMWARE-VVX/6.3.1.8427.rts30/sip.ver",
+    "FIRMWARE-VVX/5.9.6.rts38/sip.ver",
     "FIRMWARE-TRIO/5.9.1.10906.AB/sip.ver"
 ])
 def test_polycom_fw(host, firmware):
