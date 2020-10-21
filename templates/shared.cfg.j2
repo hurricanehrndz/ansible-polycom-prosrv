@@ -27,7 +27,7 @@
   </device>
   {% endif %}
   {% if polycom_set_ca_cert %}
-  <device device.set="1" device.sec.TLS.customCaCert1={{ polycom_ca_cert }} device.sec.TLS.customCaCert1.set="1" />
+  <device device.sec.TLS.customCaCert1="{{ polycom_ca_cert }}" device.sec.TLS.customCaCert1.set="1" />
   {% endif %}
   <device device.prov.tagSerialNo="1" device.prov.tagSerialNo.set="1" />
   {% if polycom_enable_http %}
